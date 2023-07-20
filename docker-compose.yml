@@ -1,0 +1,9 @@
+version: '3.3'
+
+
+services:
+  one-way-bot:
+    build: .
+    environment:
+      TG_TOKEN: ''
+    restart: always
