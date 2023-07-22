@@ -45,6 +45,9 @@ func (b *Bot) ProcessNewChatMembers(user []tgbotapi.User, chatID int64) error {
 func (b *Bot) SendWelcomeMessage(person tgbotapi.User, chatID int64) error {
 	message := fmt.Sprintf(welcomeMessageFormat, person.UserName)
 
+	tgmsg := tgbotapi.NewMessage(chatID, message)
+	tgmsg.DisableNotification = true
+
 	_, err := b.bot.Send(tgbotapi.NewMessage(chatID, message))
 	if err != nil {
 		log.Errorf("Error send welcome message: %s", err)
